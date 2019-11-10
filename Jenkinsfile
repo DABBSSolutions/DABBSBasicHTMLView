@@ -12,7 +12,8 @@ node('master'){
         stage('deploy'){
             echo "ur in deploy stage"
         }
-    }catch{
+    }catch(error){
+        throw error
         echo "an exception was caught!"
     }
 }
