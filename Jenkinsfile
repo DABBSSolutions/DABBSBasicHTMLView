@@ -10,10 +10,12 @@ node('master'){
             echo "ur in Testing stage"
         }
         stage('deploy'){
-            echo "ur in deploy stage"
+            echo "ur in deployment stage!"
         }
     }catch(error){
         throw error
         echo "an exception was caught!"
+    }finally{
+        echo "ITS DONE!"
     }
 }
