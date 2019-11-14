@@ -4,7 +4,7 @@
 node('master'){
     try{
         stage('build'){
-            echo "u r in build stage."
+            echo "u r in build stage. hi there"
         }
         stage('testing'){
             echo "ur in Testing stage"
