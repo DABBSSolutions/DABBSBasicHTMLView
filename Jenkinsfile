@@ -22,13 +22,13 @@ Message generated from the Jenkins pipeline script.''', recipientProviders: [dev
                 expression { doError == '1' }
             }
             steps {
-                echo "u r in build stage. hi there"
+                cho "u r in build stage. hi there"
             }
         }
         
         stage('Testing') {
             when {
-                expression { doError == '1'lkdn }
+                expression { doError == '1' }
             }
             steps {
                 echo "ur in Testing stage"
