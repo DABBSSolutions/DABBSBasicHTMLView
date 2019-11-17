@@ -26,9 +26,9 @@ Message generated from the Jenkins pipeline script.''', recipientProviders: [dev
             }
         }
         
-        tage('Testing') {
+        stage('Testing') {
             when {
-                expression { doError == '1' }
+                expression { doError == '1'lkdn }
             }
             steps {
                 echo "ur in Testing stage"
