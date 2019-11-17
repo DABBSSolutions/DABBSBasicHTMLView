@@ -11,7 +11,7 @@ Message generated from the Jenkins pipeline script.''', recipientProviders: [dev
             echo "u r in build stage. hi there"
         }
         stage('testing'){
-            echo "ur in Testing stage"
+            echo "ur in Testing stage"kdfjskdf 
         }
         stage('deploy'){
             echo "ur in deployment stage!"
