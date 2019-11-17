@@ -26,7 +26,7 @@ Message generated from the Jenkins pipeline script.''', recipientProviders: [dev
             }
         }
         
-        stage('Testing') {
+        tage('Testing') {
             when {
                 expression { doError == '1' }
             }
