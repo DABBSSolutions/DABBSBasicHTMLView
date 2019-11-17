@@ -23,7 +23,7 @@ Message generated from the Jenkins pipeline script.''', recipientProviders: [dev
             echo 'I will always say Hello again!'
             
             emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
-                recipientProviders: [[$class: 'DevelopersRecipientProvider'],
+                recipientProviders: [developers()],
                 subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}",to: 'kulsumsiddiqui0016@gmail.com'            
     }
 }
