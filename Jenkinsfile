@@ -1,5 +1,6 @@
 #!/usr/bin/env groovy
 
+doError = '1'
 
 node('master'){
     try{
@@ -11,7 +12,13 @@ Message generated from the Jenkins pipeline script.''', recipientProviders: [dev
             echo "u r in build stage. hi there"
         }
         stage('testing'){
-            echo "ur in Testing stage"kdfjskdf 
+            when {
+                expression { doError == '1' }
+            }
+            steps
+            {
+                echo "ur in Testing stage"
+            } 
         }
         stage('deploy'){
             echo "ur in deployment stage!"
