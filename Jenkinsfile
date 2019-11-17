@@ -4,7 +4,7 @@
 node('master'){
     try{
         stage('Email Notification'){
-            mail bcc: '', body: 'A new commit has been detected. Proceeding to process the repository through pipeline.', cc: '', from: 'daniyalakbar1217@gmail.com', replyTo: '', subject: 'Jenkins Job', to: 'kulsumsiddiqui0016@gmail.com'
+            echo "Emailing..."
         }
         stage('build'){
             echo "u r in build stage. hi there"
