@@ -22,7 +22,7 @@ Message generated from the Jenkins pipeline script.''', recipientProviders: [dev
                 expression { doError == '1' }
             }
             steps {
-                cho "u r in build stage. hi there"
+                echo "u r in build stage. hi there"
             }
         }
         
