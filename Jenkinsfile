@@ -24,6 +24,7 @@ Message generated from the Jenkins pipeline script.''', recipientProviders: [dev
             echo "ur in deployment stage!"
         }
     }catch(error){
+        doError = '0'
         throw error
         echo "an exception was caught!"
     }finally {
