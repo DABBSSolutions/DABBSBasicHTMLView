@@ -1,4 +1,4 @@
-#!/usr/bin/env groovy
+
 
 doError = '1'
 
@@ -15,10 +15,7 @@ Message generated from the Jenkins pipeline script.''', recipientProviders: [dev
             when {
                 expression { doError == '1' }
             }
-            steps
-            {
-                echo "ur in Testing stage"
-            } 
+            echo "ur in Testing stage"
         }
         stage('deploy'){
             echo "ur in deployment stage!"
