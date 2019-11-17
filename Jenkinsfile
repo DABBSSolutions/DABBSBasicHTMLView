@@ -1,41 +1,25 @@
+#!/usr/bin/env groovy
 
-pipeline {
-    environment {
-        //This variable need be tested as string
-        doError = '1'
-    }
-   
-    agent any
-    
-    stages {
-        stage('Email Notification') {
+
+node('master'){
+    try{
+        stage('Email Notification'){
             emailext body: '''A new commit has been detected. Proceeding to the pipeline. 
 Message generated from the Jenkins pipeline script.''', recipientProviders: [developers()], subject: 'New Commit Found!', to: 'kulsumsiddiqui0016@gmail.com'
         }
-        
-        stage('Error') {
-            when {
-                expression { doError == '1' }
-            }
-            steps {
-                echo "Failure"
-                error "failure test. It's work"
-            }
+        stage('build'){
+            echo "u r in build stage. hi there"
         }
-        
-        stage('Success') {
-            when {
-                expression { doError == '0' }
-            }
-            steps {
-                echo "ok"
-            }
+        stage('testing'){
+            echo "ur in Testing stage"
         }
+        stage('deploy'){
+            echo "ur in deployment stage!"
+        }
+    }catch(error){
+        throw error
+        echo "an exception was caught!"
+    }finally{
+        echo "ITS DONE! WEBHOOK is working!!!"
     }
-    
 }
-
-
-
-
-
