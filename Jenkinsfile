@@ -8,6 +8,11 @@ pipeline {
     agent any
     
     stages {
+        stage('Email Notification') {
+            emailext body: '''A new commit has been detected. Proceeding to the pipeline. 
+Message generated from the Jenkins pipeline script.''', recipientProviders: [developers()], subject: 'New Commit Found!', to: 'kulsumsiddiqui0016@gmail.com'
+        }
+        
         stage('Error') {
             when {
                 expression { doError == '1' }
@@ -27,14 +32,10 @@ pipeline {
             }
         }
     }
-    post {
-        always {
-            echo 'I will always say Hello again!'
-            
-            emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
-                recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
-                subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
-            
-        }
-    }
+    
 }
+
+
+
+
+
