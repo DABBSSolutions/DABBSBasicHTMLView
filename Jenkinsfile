@@ -11,7 +11,7 @@ Message generated from the Jenkins pipeline script.''', recipientProviders: [dev
             echo "u r in build stage. hi there"
         }
         stage('testing'){
-            cho "ur in Testing stage"
+            echo "ur in Testing stage"
         }
         stage('deploy'){
             echo "ur in deployment stage!"
@@ -23,7 +23,7 @@ Message generated from the Jenkins pipeline script.''', recipientProviders: [dev
             echo 'I will always say Hello again!'
             
             emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
-                recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
+                recipientProviders: [[$class: 'DevelopersRecipientProvider'],
                 subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}",to: 'kulsumsiddiqui0016@gmail.com'            
     }
 }
