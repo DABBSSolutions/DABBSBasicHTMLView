@@ -19,7 +19,14 @@ Message generated from the Jenkins pipeline script.''', recipientProviders: [dev
     }catch(error){
         throw error
         echo "an exception was caught!"
-    }finally{
-        echo "ITS DONE! WEBHOOK is working!!!"
+    }post {
+        always {
+            echo 'I will always say Hello again!'
+            
+            emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
+                recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
+                subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}",to: 'kulsumsiddiqui0016@gmail.com'
+            
+        }
     }
 }
