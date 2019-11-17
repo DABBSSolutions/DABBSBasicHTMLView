@@ -3,6 +3,9 @@
 
 node('master'){
     try{
+        stage('Email Notification'){
+            mail bcc: '', body: 'A new commit has been detected. Proceeding to process the repository through pipeline.', cc: '', from: 'daniyalakbar1217@gmail.com', replyTo: '', subject: 'Jenkins Job', to: 'kulsumsiddiqui0016@gmail.com'
+        }
         stage('build'){
             echo "u r in build stage. hi there"
         }
@@ -11,9 +14,6 @@ node('master'){
         }
         stage('deploy'){
             echo "ur in deployment stage!"
-        }
-        stage('Email Notification'){
-            mail bcc: '', body: 'Hi there, this email is generated from within the Jenkinsfile.', cc: '', from: 'daniyalakbar1217@gmail.com', replyTo: '', subject: 'Jenkins Job', to: 'kulsumsiddiqui0016@gmail.com'
         }
     }catch(error){
         throw error
