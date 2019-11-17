@@ -1,24 +1,41 @@
 #!/usr/bin/env groovy
 
-
-node('master'){
-    try{
-        stage('Email Notification'){
-            echo "Emailing..."
+pipeline {
+    environment {
+        //This variable need be tested as string
+        doError = '1'
+    }
+   
+    agent any
+    
+    stages {
+        stage('Error') {
+            when {
+                expression { doError == '1' }
+            }
+            steps {
+                echo "Failure"
+                error "failure test. It's work"
+            }
         }
-        stage('build'){
-            echo "u r in build stage. hi there"
+        
+        stage('Success') {
+            when {
+                expression { doError == '0' }
+            }
+            steps {
+                echo "ok"
+            }
         }
-        stage('testing'){
-            echo "ur in Testing stage"
+    }
+    post {
+        always {
+            echo 'I will always say Hello again!'
+            
+            emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
+                recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
+                subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
+            
         }
-        stage('deploy'){
-            echo "ur in deployment stage!"
-        }
-    }catch(error){
-        throw error
-        echo "an exception was caught!"
-    }finally{
-        echo "ITS DONE! WEBHOOK is working!!!"
     }
 }
