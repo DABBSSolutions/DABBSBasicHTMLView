@@ -13,7 +13,7 @@ node('master'){
             echo "ur in deployment stage!"
         }
         stage('Email Notification'){
-            mail bcc: '', body: 'Hi there ', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'kulsumsiddiqui0016@gmail.com'
+            
         }
     }catch(error){
         throw error
