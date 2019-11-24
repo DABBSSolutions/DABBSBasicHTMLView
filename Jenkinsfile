@@ -41,9 +41,7 @@ Message generated from the Jenkins pipeline script.''', recipientProviders: [dev
             }
             steps {
                 echo "ur in deployment stage!"
-                sh "ssh -tt root@192.168.109.139"
-                
-                echo "TEXT FILE IS CREATED!"
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'RemoteMachine', sshRetry: [retries: 3, retryDelay: 10000], transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'echo "transferring done"', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '*.html')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
             }
         }
     }
