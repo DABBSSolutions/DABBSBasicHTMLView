@@ -41,8 +41,8 @@ Message generated from the Jenkins pipeline script.''', recipientProviders: [dev
             }
             steps {
                 echo "ur in deployment stage!"
-                sh "ssh -tt root@192.168.109.139 '
-                    touch abc.txt ' "
+                sh "ssh -tt root@192.168.109.139 
+                    touch abc.txt  "
                 
                 echo "TEXT FILE IS CREATED!"
             }
