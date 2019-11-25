@@ -22,7 +22,7 @@ Message generated from the Jenkins pipeline script.''', recipientProviders: [dev
                 expression { doError == '1' }
             }
             steps {
-                echo "u r in build stage. hi there"
+                echo "u r in build stage."
             }
         }
         
@@ -47,9 +47,9 @@ Message generated from the Jenkins pipeline script.''', recipientProviders: [dev
     }
     post {
         always {
-            echo 'I will always say Hello again!'
+            echo 'Build Report Sent via Email to: Kulsumsiddiqui0016@gmail.com'
             
-            emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
+                emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
                 recipientProviders: [developers()],
                 subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}",to: 'kulsumsiddiqui0016@gmail.com'
             
