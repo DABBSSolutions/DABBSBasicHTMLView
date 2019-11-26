@@ -22,7 +22,7 @@ Message generated from the Jenkins pipeline script.''', recipientProviders: [dev
                 expression { doError == '1' }
             }
             steps {
-                echo "u r in build stage."
+                echo "You're in build stage."
             }
         }
         
@@ -31,11 +31,11 @@ Message generated from the Jenkins pipeline script.''', recipientProviders: [dev
                 expression { doError == '1' }
             }
             steps {
-                echo "ur in Testing stage"
+                echo "You're in Testing stage"
             }
         }
         
-        stage('Deploy') {
+        stage('Deployment') {
             when {
                 expression { doError == '1' }
             }
